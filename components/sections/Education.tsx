@@ -2,7 +2,13 @@
 
 import { motion } from 'framer-motion';
 import { siteConfig } from '@/config/site';
-import { GraduationCap, Calendar, BookOpen, Award } from 'lucide-react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { 
+  faGraduationCap, 
+  faCalendarDays, 
+  faBookOpen, 
+  faBuildingColumns 
+} from '@fortawesome/free-solid-svg-icons';
 
 export function Education() {
   return (
@@ -52,18 +58,18 @@ export function Education() {
 
                 <div className="group relative">
                   <div className="relative p-8 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 rounded-2xl border border-gray-200 dark:border-gray-800 hover:border-purple-500/50 dark:hover:border-purple-500/50 transition-all duration-300 hover:shadow-2xl hover:shadow-purple-500/10">
-                    {/* Icon */}
-                    <div className={`inline-flex p-3 bg-gradient-to-br from-purple-500 to-blue-500 rounded-xl mb-4 ${
+                    {/* FontAwesome Icon */}
+                    <div className={`inline-flex items-center justify-center w-12 h-12 bg-gradient-to-br from-purple-500 to-blue-500 rounded-xl mb-4 text-white ${
                       index % 2 === 0 ? '' : 'md:float-right md:ml-4'
                     }`}>
-                      <GraduationCap className="w-6 h-6 text-white" />
+                      <FontAwesomeIcon icon={faGraduationCap} className="w-6 h-6 text-white" />
                     </div>
 
                     {/* Date Badge */}
                     <div className={`inline-flex items-center gap-2 px-4 py-2 bg-purple-500/10 rounded-full border border-purple-500/20 mb-4 ${
                       index % 2 === 0 ? '' : 'md:float-left md:mr-4'
                     }`}>
-                      <Calendar className="w-4 h-4 text-purple-500" />
+                      <FontAwesomeIcon icon={faCalendarDays} className="w-3.5 h-3.5 text-purple-500" />
                       <span className="text-sm font-medium text-purple-600 dark:text-purple-400">
                         {edu.startDate} - {edu.endDate}
                       </span>
@@ -75,7 +81,7 @@ export function Education() {
                       </h3>
                       
                       <div className="flex items-center gap-2 mb-3 text-purple-600 dark:text-purple-400">
-                        <Award className="w-5 h-5" />
+                        <FontAwesomeIcon icon={faBuildingColumns} className="w-4 h-4" />
                         <p className="text-lg font-semibold">
                           {edu.institution}
                         </p>
@@ -83,7 +89,7 @@ export function Education() {
 
                       {edu.field && (
                         <div className="flex items-center gap-2 mb-4 text-gray-600 dark:text-gray-400">
-                          <BookOpen className="w-4 h-4" />
+                          <FontAwesomeIcon icon={faBookOpen} className="w-4 h-4" />
                           <p className="text-sm font-medium">{edu.field}</p>
                         </div>
                       )}

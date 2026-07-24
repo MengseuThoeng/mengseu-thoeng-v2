@@ -14,7 +14,7 @@ export function HeroClean() {
   name: "${siteConfig.author}",
   role: "Microservices Architect",
   expertise: ["Spring Boot", "Kafka", "React"],
-  status: "Building the future... ⚡"
+  status: "Building the future..."
 };`;
 
   useEffect(() => {

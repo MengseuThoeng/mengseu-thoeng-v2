@@ -1,19 +1,23 @@
+import { HeaderNew } from '@/components/HeaderNew';
 import { HeroClean } from '@/components/sections/HeroClean';
 import { AboutUnique } from '@/components/sections/AboutUnique';
 import { Education } from '@/components/sections/Education';
 import { ExperienceUnique } from '@/components/sections/ExperienceUnique';
 import { ProjectsUnique } from '@/components/sections/ProjectsUnique';
+import { PreGraduationUnique } from '@/components/sections/PreGraduationUnique';
 import { SkillsUnique } from '@/components/sections/SkillsUnique';
 import { ContactUnique } from '@/components/sections/ContactUnique';
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-white dark:bg-black transition-colors">
+      <HeaderNew />
       <HeroClean />
       <AboutUnique />
       <Education />
       <ExperienceUnique />
       <ProjectsUnique />
+      <PreGraduationUnique />
       <SkillsUnique />
       <ContactUnique />
       

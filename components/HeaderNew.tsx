@@ -1,38 +1,64 @@
 "use client";
 
 import { FloatingNav } from "@/components/ui/floating-navbar";
-import { Home, User, Briefcase, Code, Mail } from "lucide-react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faHouse,
+  faUser,
+  faGraduationCap,
+  faBriefcase,
+  faCode,
+  faImages,
+  faScrewdriverWrench,
+  faEnvelope
+} from "@fortawesome/free-solid-svg-icons";
 
 export function HeaderNew() {
   const navItems = [
     {
       name: "Home",
       link: "#home",
-      icon: <Home className="h-4 w-4 text-neutral-500 dark:text-white" />,
+      icon: <FontAwesomeIcon icon={faHouse} className="h-3.5 w-3.5 text-neutral-500 dark:text-white" />,
     },
     {
       name: "About",
       link: "#about",
-      icon: <User className="h-4 w-4 text-neutral-500 dark:text-white" />,
+      icon: <FontAwesomeIcon icon={faUser} className="h-3.5 w-3.5 text-neutral-500 dark:text-white" />,
+    },
+    {
+      name: "Education",
+      link: "#education",
+      icon: <FontAwesomeIcon icon={faGraduationCap} className="h-3.5 w-3.5 text-neutral-500 dark:text-white" />,
     },
     {
       name: "Experience",
       link: "#experience",
-      icon: <Briefcase className="h-4 w-4 text-neutral-500 dark:text-white" />,
+      icon: <FontAwesomeIcon icon={faBriefcase} className="h-3.5 w-3.5 text-neutral-500 dark:text-white" />,
     },
     {
       name: "Projects",
       link: "#projects",
-      icon: <Code className="h-4 w-4 text-neutral-500 dark:text-white" />,
+      icon: <FontAwesomeIcon icon={faCode} className="h-3.5 w-3.5 text-neutral-500 dark:text-white" />,
+    },
+    {
+      name: "Pre-Graduation",
+      link: "#pre-graduation",
+      icon: <FontAwesomeIcon icon={faImages} className="h-3.5 w-3.5 text-neutral-500 dark:text-white" />,
+    },
+    {
+      name: "Skills",
+      link: "#skills",
+      icon: <FontAwesomeIcon icon={faScrewdriverWrench} className="h-3.5 w-3.5 text-neutral-500 dark:text-white" />,
     },
     {
       name: "Contact",
       link: "#contact",
-      icon: <Mail className="h-4 w-4 text-neutral-500 dark:text-white" />,
+      icon: <FontAwesomeIcon icon={faEnvelope} className="h-3.5 w-3.5 text-neutral-500 dark:text-white" />,
     },
   ];
+
   return (
-    <div className="relative w-full">
+    <div className="relative w-full z-50">
       <FloatingNav navItems={navItems} />
     </div>
   );

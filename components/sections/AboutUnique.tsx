@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Rocket, Zap, Code2, Cloud, Sparkles, Award } from "lucide-react";
+import { Rocket, Zap, Code2, Cloud, Sparkles, Award, MapPin, Briefcase } from "lucide-react";
 import Image from "next/image";
 import { HoverEffect } from "@/components/ui/card-hover-effect";
 import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
@@ -129,65 +129,6 @@ export function AboutUnique() {
 
         {/* Feature cards with hover effect */}
         <HoverEffect items={features} className="max-w-7xl mx-auto" />
-
-        {/* Stats Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="mt-24 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto"
-        >
-          {[
-            { value: "3+", label: "Years Exp" },
-            { value: "86+", label: "Projects" },
-            { value: "15+", label: "Tech Stack" },
-            { value: "100%", label: "Passion" },
-          ].map((stat, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, scale: 0.5 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="text-center"
-            >
-              <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-blue-500/20 blur-2xl" />
-                <div className="relative bg-white/80 dark:bg-gray-900/50 backdrop-blur-xl border border-gray-300 dark:border-gray-800 rounded-2xl p-6 hover:border-purple-500/50 transition-colors">
-                  <div className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 dark:from-purple-400 dark:to-blue-400 bg-clip-text text-transparent mb-2">
-                    {stat.value}
-                  </div>
-                  <div className="text-sm text-gray-600 dark:text-gray-500">{stat.label}</div>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
-
-        {/* CTA Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="mt-24 text-center"
-        >
-          <div className="inline-block relative">
-            <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-blue-500 blur-3xl opacity-50" />
-            <div className="relative bg-gradient-to-r from-purple-500/10 to-blue-500/10 border border-purple-500/30 rounded-2xl px-8 md:px-12 py-8 backdrop-blur-xl">
-              <div className="flex items-center justify-center gap-3 mb-3">
-                <Award className="w-6 h-6 text-purple-600 dark:text-purple-400" />
-                <p className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white">
-                  ISTAD Graduate 2024
-                </p>
-              </div>
-              <p className="text-gray-700 dark:text-gray-400 text-sm md:text-base">
-                📍 Phnom Penh, Cambodia 🇰🇭 | 💼 Open to opportunities | 🚀 Ready to build the future
-              </p>
-            </div>
-          </div>
-        </motion.div>
       </div>
     </section>
   );
