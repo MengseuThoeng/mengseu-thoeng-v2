@@ -20,6 +20,11 @@ export const metadata: Metadata = {
   keywords: siteConfig.metadata.keywords,
   authors: [{ name: siteConfig.author, url: siteConfig.baseUrl }],
   creator: siteConfig.author,
+  icons: {
+    icon: '/seu.jpg',
+    shortcut: '/seu.jpg',
+    apple: '/seu.jpg',
+  },
   openGraph: {
     type: 'website',
     locale: 'en_US',

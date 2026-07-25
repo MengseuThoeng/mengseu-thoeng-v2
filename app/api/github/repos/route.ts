@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-const GITHUB_TOKEN = process.env.GITHUB_TOKEN || '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';
+const GITHUB_TOKEN = process.env.GITHUB_TOKEN 
 const GITHUB_USERNAME = 'MengseuThoeng';
 
 export async function GET(request: NextRequest) {
@@ -8,53 +8,69 @@ export async function GET(request: NextRequest) {
   const page = parseInt(searchParams.get('page') || '1');
   const perPage = parseInt(searchParams.get('per_page') || '9');
 
+  const headers: Record<string, string> = {
+    'Accept': 'application/vnd.github.v3+json',
+    'User-Agent': 'MengseuThoeng-Portfolio-App',
+  };
+
+  if (GITHUB_TOKEN) {
+    headers['Authorization'] = GITHUB_TOKEN.startsWith('github_pat_')
+      ? `Bearer ${GITHUB_TOKEN}`
+      : `token ${GITHUB_TOKEN}`;
+  }
+
   try {
-    // First, get the total count of repos
+    // 1. Get user details for public repo count
     const userResponse = await fetch(
       `https://api.github.com/users/${GITHUB_USERNAME}`,
       {
-        headers: {
-          'Authorization': `token ${GITHUB_TOKEN}`,
-          'Accept': 'application/vnd.github.v3+json',
-        },
+        headers,
+        cache: 'no-store',
       }
     );
 
-    const userData = await userResponse.json();
-    const totalPublicRepos = userData.public_repos || 0;
-    const totalPages = Math.ceil(totalPublicRepos / perPage);
+    let totalPublicRepos = 0;
+    if (userResponse.ok) {
+      const userData = await userResponse.json();
+      totalPublicRepos = userData.public_repos || 0;
+    }
 
-    // Then fetch the repos for the current page
+    const totalPages = Math.max(1, Math.ceil(totalPublicRepos / perPage));
+
+    // 2. Fetch public repos
     const response = await fetch(
       `https://api.github.com/users/${GITHUB_USERNAME}/repos?page=${page}&per_page=${perPage}&sort=updated&type=owner`,
       {
-        headers: {
-          'Authorization': `token ${GITHUB_TOKEN}`,
-          'Accept': 'application/vnd.github.v3+json',
-        },
-        next: { revalidate: 3600 } // Cache for 1 hour
+        headers,
+        cache: 'no-store',
       }
     );
 
     if (!response.ok) {
+      const errorText = await response.text();
+      console.error(`GitHub API error ${response.status}:`, errorText);
       throw new Error(`GitHub API error: ${response.status}`);
     }
 
     const repos = await response.json();
 
-    // Filter and format repos
+    if (!Array.isArray(repos)) {
+      throw new Error('Invalid response from GitHub API');
+    }
+
+    // Filter out forks & format repos
     const formattedRepos = repos
       .filter((repo: any) => !repo.fork && !repo.private)
       .map((repo: any) => ({
         id: repo.id,
         name: repo.name,
-        description: repo.description,
-        language: repo.language,
-        stars: repo.stargazers_count,
-        forks: repo.forks_count,
+        description: repo.description || 'GitHub project repository',
+        language: repo.language || 'TypeScript',
+        stars: repo.stargazers_count || 0,
+        forks: repo.forks_count || 0,
         topics: repo.topics || [],
         githubUrl: repo.html_url,
-        homepage: repo.homepage,
+        homepage: repo.homepage || '',
         updatedAt: repo.updated_at,
         createdAt: repo.created_at,
       }));

@@ -1,134 +1,155 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Rocket, Zap, Code2, Cloud, Sparkles, Award, MapPin, Briefcase } from "lucide-react";
 import Image from "next/image";
-import { HoverEffect } from "@/components/ui/card-hover-effect";
-import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
 import { siteConfig } from "@/config/site";
+import { User, ShieldCheck, MapPin, Building2, Server, Cpu, Code2, Rocket, ArrowRight } from "lucide-react";
 
 export function AboutUnique() {
-  const features = [
+  const capabilities = [
     {
-      title: "Microservices Architecture",
-      description: "Building scalable, resilient systems with Spring Boot, Apache Kafka, and event-driven patterns. Expertise in distributed systems and service orchestration.",
-      icon: <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center">
-        <Cloud className="w-6 h-6 text-white" />
-      </div>,
+      title: "Microservices & Kafka",
+      desc: "Architecting distributed backend services with Spring Boot, Apache Kafka event bus, and Micro Frontend web apps.",
+      icon: Server,
     },
     {
-      title: "Performance Engineering",
-      description: "Optimizing applications for maximum speed and efficiency. Profiling, caching strategies, and database optimization for seamless user experiences.",
-      icon: <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-yellow-500 to-orange-500 flex items-center justify-center">
-        <Zap className="w-6 h-6 text-white" />
-      </div>,
+      title: "Enterprise Banking Systems",
+      desc: "Developing high-security database services and enterprise reporting for ACLEDA Bank Plc. using Oracle SQL.",
+      icon: Building2,
     },
     {
-      title: "Full Stack Development",
-      description: "Crafting beautiful, responsive web applications with React, Next.js, TypeScript, and modern UI libraries. From concept to deployment.",
-      icon: <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-blue-500 to-cyan-500 flex items-center justify-center">
-        <Code2 className="w-6 h-6 text-white" />
-      </div>,
+      title: "Full-Stack Engineering",
+      desc: "Building modern, high-performance web applications using Next.js, React, TypeScript, and Tailwind CSS.",
+      icon: Code2,
     },
     {
-      title: "Cloud & DevOps",
-      description: "Deploying containerized applications with Docker and Kubernetes. CI/CD pipelines, monitoring, and infrastructure as code.",
-      icon: <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-green-500 to-emerald-500 flex items-center justify-center">
-        <Rocket className="w-6 h-6 text-white" />
-      </div>,
-    },
-    {
-      title: "System Design",
-      description: "Architecting robust solutions with clean code principles, SOLID patterns, and scalable design. Focus on maintainability and extensibility.",
-      icon: <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-pink-500 to-rose-500 flex items-center justify-center">
-        <Sparkles className="w-6 h-6 text-white" />
-      </div>,
-    },
-    {
-      title: "Problem Solving",
-      description: "Tackling complex challenges with creative solutions. Algorithm optimization, debugging, and turning requirements into elegant code.",
-      icon: <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-indigo-500 to-purple-500 flex items-center justify-center">
-        <Award className="w-6 h-6 text-white" />
-      </div>,
+      title: "DevOps & Cloud Containers",
+      desc: "Deploying containerized microservices with Docker, Docker Compose, CI/CD automation, and Linux servers.",
+      icon: Rocket,
     },
   ];
 
   return (
-    <section id="about" className="py-32 bg-gray-50 dark:bg-black relative overflow-hidden transition-colors">
-      {/* Animated background */}
-      <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f12_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f12_1px,transparent_1px)] bg-[size:4rem_4rem]" />
-        <motion.div
-          animate={{
-            backgroundPosition: ["0% 0%", "100% 100%"],
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            repeatType: "reverse",
-          }}
-          className="absolute inset-0 opacity-30"
-          style={{
-            backgroundImage: "radial-gradient(circle at center, rgba(139, 92, 246, 0.1) 0%, transparent 50%)",
-            backgroundSize: "50% 50%",
-          }}
-        />
+    <section id="about" className="py-24 bg-white dark:bg-black relative overflow-hidden transition-colors font-sans">
+      {/* Background Ripple & Grid */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f0a_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f0a_1px,transparent_1px)] bg-[size:4rem_4rem]" />
+        <div className="absolute top-1/2 left-10 w-[500px] h-[500px] bg-emerald-500/10 dark:bg-emerald-500/15 rounded-full blur-[140px]" />
       </div>
-      
+
       <div className="container mx-auto px-6 relative z-10">
-        {/* Header */}
+        {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-20"
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/10 border border-purple-500/30 mb-6">
-            <Rocket className="w-4 h-4 text-purple-500 dark:text-purple-400" />
-            <span className="text-sm text-purple-600 dark:text-purple-300 font-medium">Who I Am</span>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20 mb-4">
+            <User className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+            <span className="text-sm font-semibold text-emerald-600 dark:text-emerald-300">About Me</span>
           </div>
 
-          {/* Profile Image */}
+          <h2 className="text-4xl md:text-6xl font-bold tracking-tight mb-4 text-gray-900 dark:text-white">
+            Architecting High-Scale Systems
+          </h2>
+          <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-base sm:text-lg">
+            Software Engineer specializing in backend microservices, enterprise reporting systems, and modern web architecture.
+          </p>
+        </motion.div>
+
+        {/* 2-Column Executive Stage */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start max-w-6xl mx-auto">
+          
+          {/* Left 5 Cols: Executive Portrait Card */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
+            initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="relative mx-auto w-48 h-48 mb-8"
+            transition={{ duration: 0.6 }}
+            className="lg:col-span-5"
           >
-            <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full blur-2xl opacity-50 animate-pulse" />
-            <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-purple-500/30 dark:border-white/10 shadow-2xl">
-              <Image
-                src={siteConfig.profile_image}
-                alt={siteConfig.author}
-                fill
-                className="object-cover"
-                priority
-              />
+            <div className="bg-white dark:bg-zinc-900/90 backdrop-blur-2xl border border-gray-200 dark:border-zinc-800 rounded-3xl p-6 shadow-xl relative overflow-hidden group hover:border-emerald-500/50 transition-all">
+              {/* Top Tag Bar */}
+              <div className="flex items-center justify-between mb-4">
+                <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 flex items-center gap-1">
+                  <ShieldCheck className="w-3.5 h-3.5" />
+                  VERIFIED ENGINEER
+                </span>
+                <div className="flex items-center gap-1 text-xs text-gray-500 font-mono">
+                  <MapPin className="w-3.5 h-3.5 text-emerald-500" />
+                  <span>Phnom Penh</span>
+                </div>
+              </div>
+
+              {/* Photo Frame */}
+              <div className="relative w-full h-118 aspect-[4/5] rounded-2xl overflow-hidden mb-5 border border-gray-200 dark:border-zinc-700 shadow-md">
+                <Image
+                  src={siteConfig.profile_image}
+                  alt={siteConfig.author}
+                  fill
+                  className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                  priority
+                />
+              </div>
+
+              {/* Title Info */}
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-0.5">
+                {siteConfig.author}
+              </h3>
+              <p className="text-xs font-mono font-bold text-emerald-600 dark:text-emerald-400">
+                Microservices Developer @ ACLEDA Bank Plc.
+              </p>
+
             </div>
           </motion.div>
 
-          <h2 className="text-5xl md:text-7xl font-bold mb-8">
-            <span className="bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-500 bg-clip-text text-transparent">
-              Crafting Digital
-            </span>
-            <br />
-            <span className="bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 dark:from-purple-400 dark:via-pink-400 dark:to-blue-400 bg-clip-text text-transparent">
-              Experiences
-            </span>
-          </h2>
+          {/* Right 7 Cols: Engineering Overview & Capabilities Grid */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="lg:col-span-7 space-y-6"
+          >
+            <div className="space-y-4">
+              <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white leading-tight">
+                Engineered for High Availability, Security & Scalability.
+              </h3>
+              <p className="text-gray-600 dark:text-gray-300 text-sm sm:text-base leading-relaxed">
+                I'm a Software Engineer based in Phnom Penh, Cambodia. Currently working at <strong className="text-emerald-600 dark:text-emerald-400">ACLEDA Bank Plc.</strong> as a Microservices Developer, specialized in building web applications with Micro Frontend architecture and dedicated microservices for enterprise financial report processing.
+              </p>
+              <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
+                Graduate of the intensive 1,670-hour IT Expert program at ISTAD and candidate for Bachelor of MIS at SECTEC Institute.
+              </p>
+            </div>
 
-          <div className="max-w-4xl mx-auto">
-            <TextGenerateEffect
-              words="I'm a Software Engineer and Microservices Architect from Phnom Penh, Cambodia. I specialize in building enterprise-grade systems that scale, with a focus on clean architecture, performance, and user experience. Every line of code I write is crafted with purpose and precision."
-              className="text-lg md:text-xl text-gray-700 dark:text-gray-400 leading-relaxed"
-            />
-          </div>
-        </motion.div>
+            {/* 4 Capabilities Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+              {capabilities.map((cap) => {
+                const Icon = cap.icon;
+                return (
+                  <div
+                    key={cap.title}
+                    className="p-5 rounded-2xl bg-white dark:bg-zinc-900/80 border border-gray-200 dark:border-zinc-800 shadow-sm hover:border-emerald-500/50 transition-all group"
+                  >
+                    <div className="w-9 h-9 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                      <Icon className="w-5 h-5" />
+                    </div>
+                    <h4 className="text-base font-bold text-gray-900 dark:text-white mb-1">
+                      {cap.title}
+                    </h4>
+                    <p className="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
+                      {cap.desc}
+                    </p>
+                  </div>
+                );
+              })}
+            </div>
+          </motion.div>
 
-        {/* Feature cards with hover effect */}
-        <HoverEffect items={features} className="max-w-7xl mx-auto" />
+        </div>
       </div>
     </section>
   );

@@ -14,7 +14,7 @@ export function HeroClean() {
   name: "${siteConfig.author}",
   role: "Microservices Architect",
   expertise: ["Spring Boot", "Kafka", "React"],
-  status: "Building the future..."
+  status: "Building the future... ⚡"
 };`;
 
   useEffect(() => {
@@ -61,17 +61,17 @@ export function HeroClean() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/10 border border-purple-500/30 mb-6">
-                <Sparkles className="w-4 h-4 text-purple-500 dark:text-purple-400" />
-                <span className="text-sm text-purple-600 dark:text-purple-300 font-medium">Available for opportunities</span>
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/30 mb-6">
+                <Sparkles className="w-4 h-4 text-emerald-500 dark:text-emerald-400" />
+                <span className="text-sm text-emerald-600 dark:text-emerald-300 font-medium">Available for opportunities</span>
               </div>
 
               <h1 className="text-6xl md:text-8xl font-bold mb-6">
-                <span className="bg-linear-to-r from-gray-900 via-gray-700 to-gray-600 dark:from-white dark:via-purple-200 dark:to-blue-200 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-gray-900 via-gray-700 to-gray-600 dark:from-white dark:via-emerald-100 dark:to-gray-300 bg-clip-text text-transparent">
                   Building
                 </span>
                 <br />
-                <span className="bg-linear-to-r from-purple-600 via-pink-600 to-blue-600 dark:from-purple-400 dark:via-pink-400 dark:to-blue-400 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-emerald-500 via-teal-400 to-cyan-500 dark:from-emerald-400 dark:via-teal-300 dark:to-cyan-400 bg-clip-text text-transparent">
                   The Future
                 </span>
               </h1>
@@ -86,7 +86,7 @@ export function HeroClean() {
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="px-8 py-4 bg-linear-to-r from-purple-500 to-blue-500 rounded-full text-white font-semibold flex items-center gap-2 group"
+                    className="px-8 py-4 bg-gradient-to-r from-emerald-500 to-teal-600 rounded-full text-white font-semibold flex items-center gap-2 group shadow-lg shadow-emerald-500/25"
                   >
                     View My Work
                     <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -132,8 +132,8 @@ export function HeroClean() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="relative"
           >
-            <div className="absolute inset-0 bg-linear-to-r from-purple-500/20 to-blue-500/20 blur-3xl"></div>
-            
+            <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/20 to-teal-500/20 blur-3xl"></div>
+
             <div className="relative bg-white/80 dark:bg-gray-900/50 backdrop-blur-xl border border-gray-300 dark:border-gray-800 rounded-2xl overflow-hidden">
               <div className="flex items-center gap-2 px-4 py-3 border-b border-gray-300 dark:border-gray-800">
                 <div className="flex gap-2">
@@ -149,9 +149,9 @@ export function HeroClean() {
 
               <div className="p-6 font-mono text-sm">
                 <div className="text-gray-500 mb-2">
-                  <span className="text-purple-600 dark:text-purple-400">mengseu@portfolio</span>
+                  <span className="text-emerald-600 dark:text-emerald-400">mengseu@portfolio</span>
                   <span className="text-gray-600">:</span>
-                  <span className="text-blue-600 dark:text-blue-400">~</span>
+                  <span className="text-teal-600 dark:text-teal-400">~</span>
                   <span className="text-gray-600">$</span>
                 </div>
                 <pre className="text-gray-800 dark:text-gray-300 leading-relaxed whitespace-pre-wrap">
@@ -159,7 +159,7 @@ export function HeroClean() {
                   <motion.span
                     animate={{ opacity: [1, 0] }}
                     transition={{ duration: 0.8, repeat: Infinity }}
-                    className="inline-block w-2 h-5 bg-purple-400 ml-1"
+                    className="inline-block w-2 h-5 bg-emerald-500 ml-1"
                   />
                 </pre>
 
@@ -169,8 +169,8 @@ export function HeroClean() {
                     animate={{ opacity: 1, y: 0 }}
                     className="mt-6 space-y-2"
                   >
-                    <div className="text-green-400">✓ Compilation successful</div>
-                    <div className="text-blue-400">→ Ready to build amazing things</div>
+                    <div className="text-emerald-400">✓ Compilation successful</div>
+                    <div className="text-teal-400">→ Ready to build amazing things</div>
                   </motion.div>
                 )}
               </div>

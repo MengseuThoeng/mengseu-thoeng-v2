@@ -3,7 +3,7 @@ export const siteConfig = {
     author: 'Thoeng Mengseu',
     author_surname: 'Mengseu',
     titlePrefix: 'Thoeng Mengseu',
-    profile_image: '/seu.jpg',
+    profile_image: '/IMG_3539.jpg',
     form_id: 'https://formspree.io/f/myzynpbr',
     
     social: {
@@ -31,31 +31,35 @@ export const siteConfig = {
         title: "About Me",
         description: [
             "Hi! I'm Mengseu Thoeng, a passionate Software Engineer based in Phnom Penh, Cambodia. I specialize in building enterprise-grade Spring Boot applications, microservices architectures, and modern full-stack web applications.",
-            "I'm a flexible person with a passion for team leadership and collaboration. Strong in communication and organization, I love exploring new technologies. Currently working at ACLEDA Bank Plc as a Data Management Staff (preparing to transition to backend development and microservices), where I work with Oracle SQL and large-scale financial databases.",
+            "Currently working at ACLEDA Bank Plc as a Microservices Developer, building web applications with Micro Frontend architecture and dedicated microservices for enterprise financial report processing.",
             "I completed intensive software engineering training at ISTAD (1,670 hours total), mastering Spring Boot, Microservices, React, Next.js, Apache Kafka, and Docker. I'm committed to being a valuable person who can help advance Cambodia's technology economy. Code is poetry written in logic."
         ],
         image: '/seu.jpg',
     },
-    
+
     // Education
     education: [
         {
             id: 1,
-            institution: 'Center of Science and Technology Advanced Development (CSTAD/ISTAD)',
-            degree: 'Software Expert Training',
-            field: 'Advanced Software Engineering & Microservices',
+            institution: 'Institute of Science and Technology Advanced Development',
+            degree: 'IT Expert',
+            field: 'Full Stack & Spring Boot Microservices',
             startDate: 'Feb 2024',
             endDate: 'Jan 2025',
+            status: 'Specialized Certification',
             description: 'Completed intensive 1,670-hour program (Basic: 900hrs + Advanced: 770hrs). Mastered Spring Boot, Spring Advanced (HATEOAS, Data JPA, MongoDB, OAuth2, Keycloak, WebFlux), Microservices Architecture (decomposition patterns, API Gateway, service discovery, Kafka, observability), Docker, and cloud deployment.',
+            skills: ['Spring Boot', 'Microservices', 'Apache Kafka', 'Docker', 'Keycloak', 'React', 'NextJS'],
         },
         {
             id: 2,
             institution: 'SECTEC Institute',
             degree: 'Bachelor of MIS (Management Information System)',
-            field: 'Computer Science',
-            startDate: '2020',
-            endDate: '2025',
+            field: 'Computer Science & MIS',
+            startDate: 'Feb 2022',
+            endDate: 'Dec 2025',
+            status: 'Completed',
             description: 'Currently Junior year. Strong foundation in C, C++, Java, VB.NET, Database Management Systems (SQL Server, MySQL, Oracle), Data Structures & Algorithms, Web Development (ASP.NET, Java), and Management Information Systems.',
+            skills: ['C/C++', 'Java', 'Oracle SQL', 'MySQL', 'DBMS', 'Algorithms'],
         },
         {
             id: 3,
@@ -64,7 +68,9 @@ export const siteConfig = {
             field: 'Secondary Education',
             startDate: '2017',
             endDate: '2020',
-            description: 'Completed high school education with national certificate.',
+            status: 'Completed',
+            description: 'Completed high school education with national BacII certificate.',
+            skills: ['Mathematics', 'Physics', 'Logic & Problem Solving'],
         },
     ],
     
@@ -73,17 +79,17 @@ export const siteConfig = {
         {
             id: 1,
             company: 'ACLEDA Bank Plc.',
-            position: 'Staff of Data Management',
+            position: 'Microservices Developer',
             startDate: 'Apr 2025',
             endDate: 'Present',
             description: [
-                'Performed data-related tasks using Oracle SQL in a high-security enterprise environment',
-                'Assisted in maintaining and querying large-scale financial databases',
-                'Gained experience with data governance and legacy banking systems',
-                'Currently in probation period and preparing to transition to backend development and microservices role',
-                'Working with enterprise-grade database systems in Cambodia\'s leading financial institution'
+                'Architected and developed high-performance backend microservices using Spring Boot in an enterprise banking ecosystem',
+                'Built modern web applications with Micro Frontend architecture to deliver modular and scalable user interfaces',
+                'Implemented dedicated microservices for generating, processing, and calling enterprise financial reports',
+                'Integrated Apache Kafka event streaming, RESTful APIs, and secure data access layers with Oracle SQL',
+                'Collaborated with cross-functional banking teams to ensure high availability, security, and data integrity'
             ],
-            technologies: ['Oracle SQL', 'Database Management', 'Data Governance', 'Enterprise Systems'],
+            technologies: ['Microservices', 'Spring Boot', 'Micro Frontend', 'Apache Kafka', 'Reporting Services', 'Oracle SQL', 'REST API', 'Docker'],
         },
         {
             id: 2,
@@ -168,7 +174,6 @@ export const siteConfig = {
             { name: 'React.js', level: 90 },
             { name: 'Next.js', level: 88 },
             { name: 'Tailwind CSS', level: 92 },
-            { name: 'Bootstrap 5', level: 85 },
             { name: 'HTML/CSS', level: 95 },
         ],
         backend: [
@@ -234,16 +239,11 @@ export const siteConfig = {
         },
     ],
     
-    // Testimonials (optional)
-    testimonials: [
-        {
-            id: 1,
-            name: 'Client Name',
-            position: 'CEO at Company',
-            content: 'Working with Mengseu was a great experience. He delivered high-quality work on time and exceeded our expectations.',
-            avatar: '/testimonials/client1.jpg',
-        },
-        // Add more testimonials here
+    preGraduationPhotos: [
+        { id: 1, src: "/IMG_3521 2.jpg", alt: "Pre-Graduation Photo 1" },
+        { id: 2, src: "/IMG_3522.jpg", alt: "Pre-Graduation Photo 2" },
+        { id: 3, src: "/IMG_3523.jpg", alt: "Pre-Graduation Photo 3" },
+        { id: 4, src: "/IMG_3547.jpg", alt: "Pre-Graduation Photo 4" },
     ],
 } as const;
 

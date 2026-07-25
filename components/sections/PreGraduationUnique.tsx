@@ -12,12 +12,9 @@ import {
   faChevronRight 
 } from "@fortawesome/free-solid-svg-icons";
 
-const photos = [
-  { id: 1, src: "/IMG_3521 2.jpg", alt: "Pre-Graduation Photo 1" },
-  { id: 2, src: "/IMG_3522.jpg", alt: "Pre-Graduation Photo 2" },
-  { id: 3, src: "/IMG_3523.jpg", alt: "Pre-Graduation Photo 3" },
-  { id: 4, src: "/IMG_3539.jpg", alt: "Pre-Graduation Photo 4" },
-];
+import { siteConfig } from "@/config/site";
+
+const photos = siteConfig.preGraduationPhotos;
 
 export function PreGraduationUnique() {
   const [activePhotoIndex, setActivePhotoIndex] = useState<number | null>(null);
@@ -39,7 +36,7 @@ export function PreGraduationUnique() {
       {/* Subtle Background Glow */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f0a_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f0a_1px,transparent_1px)] bg-[size:4rem_4rem]" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-purple-500/10 dark:bg-purple-500/15 rounded-full blur-[140px]" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-emerald-500/10 dark:bg-emerald-500/15 rounded-full blur-[140px]" />
       </div>
 
       <div className="container mx-auto px-6 relative z-10">
@@ -51,16 +48,16 @@ export function PreGraduationUnique() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/10 border border-purple-500/20 mb-4">
-            <FontAwesomeIcon icon={faGraduationCap} className="w-4 h-4 text-purple-600 dark:text-purple-400" />
-            <span className="text-sm font-semibold text-purple-600 dark:text-purple-300">Pre-Graduation</span>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20 mb-4">
+            <FontAwesomeIcon icon={faGraduationCap} className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+            <span className="text-sm font-semibold text-emerald-600 dark:text-emerald-300">Pre-Graduation</span>
           </div>
 
           <h2 className="text-4xl md:text-6xl font-bold tracking-tight">
-            <span className="bg-gradient-to-r from-gray-900 via-gray-700 to-gray-600 dark:from-white dark:via-purple-100 dark:to-gray-300 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-gray-900 via-gray-700 to-gray-600 dark:from-white dark:via-emerald-100 dark:to-gray-300 bg-clip-text text-transparent">
               Pre-Graduation
             </span>{" "}
-            <span className="bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 dark:from-purple-400 dark:via-pink-400 dark:to-blue-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-emerald-500 via-teal-400 to-cyan-500 dark:from-emerald-400 dark:via-teal-300 dark:to-cyan-400 bg-clip-text text-transparent">
               Photos
             </span>
           </h2>
@@ -77,7 +74,7 @@ export function PreGraduationUnique() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               whileHover={{ y: -6 }}
               onClick={() => setActivePhotoIndex(index)}
-              className="group relative h-96 rounded-2xl overflow-hidden bg-gray-100 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 shadow-md hover:shadow-2xl hover:shadow-purple-500/15 cursor-pointer transition-all duration-300"
+              className="group relative h-96 rounded-2xl overflow-hidden bg-gray-100 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 shadow-md hover:shadow-2xl hover:shadow-emerald-500/15 cursor-pointer transition-all duration-300"
             >
               <Image
                 src={photo.src}

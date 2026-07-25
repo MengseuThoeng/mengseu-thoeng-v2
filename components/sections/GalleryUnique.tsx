@@ -56,7 +56,7 @@ const galleryItems: GalleryItem[] = [
     id: 5,
     title: "Pre-Graduation Ceremony Highlight",
     category: "Ceremony",
-    src: "/IMG_3539.jpg",
+    src: "/IMG_3547.jpg",
     description: "Special highlights from the pre-graduation ceremony and milestone celebration.",
     location: "Phnom Penh",
     date: "2024 - 2025",

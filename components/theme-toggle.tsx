@@ -15,7 +15,7 @@ export function ThemeToggle() {
 
   if (!mounted) {
     return (
-      <div className="w-14 h-14 rounded-full bg-gray-800/50 border border-gray-700" />
+      <div className="w-14 h-14 rounded-full bg-emerald-500/20 border border-emerald-500/30" />
     );
   }
 
@@ -24,7 +24,7 @@ export function ThemeToggle() {
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-      className="fixed bottom-8 right-8 z-50 w-14 h-14 rounded-full bg-gradient-to-r from-purple-500 to-blue-500 flex items-center justify-center shadow-lg hover:shadow-purple-500/50 transition-shadow"
+      className="fixed bottom-8 right-8 z-50 w-14 h-14 rounded-full bg-gradient-to-r from-emerald-500 to-teal-600 flex items-center justify-center shadow-lg shadow-emerald-500/25 hover:shadow-emerald-500/50 transition-shadow border border-emerald-400/30"
       aria-label="Toggle theme"
     >
       <motion.div

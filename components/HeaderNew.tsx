@@ -5,11 +5,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHouse,
   faUser,
-  faGraduationCap,
   faBriefcase,
-  faCode,
-  faImages,
   faScrewdriverWrench,
+  faCode,
+  faGraduationCap,
+  faImages,
   faEnvelope
 } from "@fortawesome/free-solid-svg-icons";
 
@@ -26,14 +26,14 @@ export function HeaderNew() {
       icon: <FontAwesomeIcon icon={faUser} className="h-3.5 w-3.5 text-neutral-500 dark:text-white" />,
     },
     {
-      name: "Education",
-      link: "#education",
-      icon: <FontAwesomeIcon icon={faGraduationCap} className="h-3.5 w-3.5 text-neutral-500 dark:text-white" />,
-    },
-    {
       name: "Experience",
       link: "#experience",
       icon: <FontAwesomeIcon icon={faBriefcase} className="h-3.5 w-3.5 text-neutral-500 dark:text-white" />,
+    },
+    {
+      name: "Skills",
+      link: "#skills",
+      icon: <FontAwesomeIcon icon={faScrewdriverWrench} className="h-3.5 w-3.5 text-neutral-500 dark:text-white" />,
     },
     {
       name: "Projects",
@@ -41,14 +41,14 @@ export function HeaderNew() {
       icon: <FontAwesomeIcon icon={faCode} className="h-3.5 w-3.5 text-neutral-500 dark:text-white" />,
     },
     {
+      name: "Education",
+      link: "#education",
+      icon: <FontAwesomeIcon icon={faGraduationCap} className="h-3.5 w-3.5 text-neutral-500 dark:text-white" />,
+    },
+    {
       name: "Pre-Graduation",
       link: "#pre-graduation",
       icon: <FontAwesomeIcon icon={faImages} className="h-3.5 w-3.5 text-neutral-500 dark:text-white" />,
-    },
-    {
-      name: "Skills",
-      link: "#skills",
-      icon: <FontAwesomeIcon icon={faScrewdriverWrench} className="h-3.5 w-3.5 text-neutral-500 dark:text-white" />,
     },
     {
       name: "Contact",

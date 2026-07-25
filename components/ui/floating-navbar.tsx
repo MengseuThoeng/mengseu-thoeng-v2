@@ -101,7 +101,7 @@ export const FloatingNav = ({
                 className={cn(
                   "relative px-2.5 sm:px-3 py-1.5 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 flex items-center gap-1.5",
                   isActive
-                    ? "text-purple-600 dark:text-purple-300 font-semibold bg-purple-500/10 border border-purple-500/20 shadow-xs"
+                    ? "text-emerald-600 dark:text-emerald-400 font-semibold bg-emerald-500/10 border border-emerald-500/20 shadow-xs"
                     : "text-gray-600 dark:text-neutral-300 hover:text-gray-900 dark:hover:text-white"
                 )}
               >
@@ -110,14 +110,6 @@ export const FloatingNav = ({
               </a>
             );
           })}
-
-          <button
-            onClick={(e) => handleScrollTo(e, "#contact")}
-            className="border text-xs sm:text-sm font-medium relative border-purple-500/30 dark:border-white/20 text-gray-900 dark:text-white px-3.5 py-1.5 rounded-full bg-purple-500/10 hover:bg-purple-500/20 transition-colors"
-          >
-            <span>Contact</span>
-            <span className="absolute inset-x-0 w-1/2 mx-auto -bottom-px bg-gradient-to-r from-transparent via-purple-500 to-transparent h-px" />
-          </button>
         </motion.div>
       </AnimatePresence>
     </>
