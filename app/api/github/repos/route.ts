@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { siteConfig } from '@/config/site';
 
-const GITHUB_TOKEN = process.env.GITHUB_TOKEN 
+const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
 const GITHUB_USERNAME = 'MengseuThoeng';
 
 export async function GET(request: NextRequest) {
@@ -25,7 +26,7 @@ export async function GET(request: NextRequest) {
       `https://api.github.com/users/${GITHUB_USERNAME}`,
       {
         headers,
-        cache: 'no-store',
+        next: { revalidate: 3600 }, // Cache for 1 hour to prevent rate limit
       }
     );
 
@@ -42,20 +43,19 @@ export async function GET(request: NextRequest) {
       `https://api.github.com/users/${GITHUB_USERNAME}/repos?page=${page}&per_page=${perPage}&sort=updated&type=owner`,
       {
         headers,
-        cache: 'no-store',
+        next: { revalidate: 3600 }, // Cache for 1 hour
       }
     );
 
     if (!response.ok) {
-      const errorText = await response.text();
-      console.error(`GitHub API error ${response.status}:`, errorText);
-      throw new Error(`GitHub API error: ${response.status}`);
+      console.warn(`GitHub API returned status ${response.status}. Using fallback projects.`);
+      return returnFallbackProjects(page, perPage);
     }
 
     const repos = await response.json();
 
     if (!Array.isArray(repos)) {
-      throw new Error('Invalid response from GitHub API');
+      return returnFallbackProjects(page, perPage);
     }
 
     // Filter out forks & format repos
@@ -79,18 +79,41 @@ export async function GET(request: NextRequest) {
       repos: formattedRepos,
       pagination: {
         currentPage: page,
-        totalPages,
+        totalPages: Math.max(1, totalPages),
         perPage,
-        totalRepos: totalPublicRepos,
+        totalRepos: totalPublicRepos || formattedRepos.length,
         hasNext: page < totalPages,
         hasPrev: page > 1,
       }
     });
   } catch (error) {
     console.error('Error fetching GitHub repos:', error);
-    return NextResponse.json(
-      { error: 'Failed to fetch repositories' },
-      { status: 500 }
-    );
+    return returnFallbackProjects(page, perPage);
   }
+}
+
+function returnFallbackProjects(page: number, perPage: number) {
+  const formatted = siteConfig.projects.map((p) => ({
+    id: p.id,
+    name: p.title,
+    description: p.description,
+    language: p.technologies[0] || "TypeScript",
+    stars: 5,
+    forks: 2,
+    topics: Array.from(p.technologies),
+    githubUrl: p.github || siteConfig.social.github,
+    homepage: p.demo || "",
+  }));
+
+  return NextResponse.json({
+    repos: formatted,
+    pagination: {
+      currentPage: page,
+      totalPages: 1,
+      perPage,
+      totalRepos: formatted.length,
+      hasNext: false,
+      hasPrev: false,
+    }
+  });
 }
