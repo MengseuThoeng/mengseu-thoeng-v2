@@ -3,9 +3,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Send, Mail, MapPin, Loader2, CheckCircle } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import { siteConfig } from "@/config/site";
 
 export function ContactUnique() {
@@ -21,7 +18,7 @@ export function ContactUnique() {
     setStatus("sending");
 
     try {
-      const response = await fetch("https://formspree.io/f/myzynpbr", {
+      const response = await fetch(siteConfig.form_id, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -42,190 +39,178 @@ export function ContactUnique() {
   };
 
   return (
-    <section id="contact" className="py-32 bg-gradient-to-b from-gray-100 to-gray-50 dark:from-gray-900 dark:to-black relative overflow-hidden transition-colors">
-      {/* Background glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1/2 h-1/2 bg-emerald-500/10 blur-[120px]" />
-      
+    <section id="contact" className="py-32 bg-white dark:bg-black relative overflow-hidden transition-colors font-sans">
+      {/* Background Grid */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f0a_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f0a_1px,transparent_1px)] bg-[size:4rem_4rem]" />
+      </div>
+
       <div className="container mx-auto px-6 relative z-10">
+        {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-20"
         >
-          <h2 className="text-5xl md:text-7xl font-bold mb-6">
-            <span className="bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-500 bg-clip-text text-transparent">
-              Let's Work
-            </span>
-            <br />
-            <span className="bg-gradient-to-r from-emerald-500 via-teal-400 to-cyan-500 dark:from-emerald-400 dark:via-teal-300 dark:to-cyan-400 bg-clip-text text-transparent">
-              Together
-            </span>
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-400 text-black border-2 border-black font-mono font-bold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] mb-6">
+            <Mail className="w-4 h-4 text-black animate-pulse" />
+            <span>LET'S TALK</span>
+          </div>
+
+          <h2 className="text-4xl md:text-6xl font-extrabold tracking-tight mb-4 text-black dark:text-white uppercase font-mono">
+            Get In Touch
           </h2>
-          <p className="text-xl text-gray-700 dark:text-gray-400 max-w-2xl mx-auto">
-            Have a project in mind? Let's create something amazing together.
+          <p className="text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto text-base sm:text-lg font-mono">
+            Have an outstanding project in mind? Let's build something amazing together.
           </p>
         </motion.div>
 
+        {/* Contact Layout */}
         <div className="max-w-4xl mx-auto">
           <div className="grid md:grid-cols-5 gap-8">
-            {/* Contact info */}
+            
+            {/* Left Column: Info Cards */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               className="md:col-span-2 space-y-6"
             >
-              <div className="bg-white/80 dark:bg-gray-900/50 backdrop-blur-xl border border-gray-300 dark:border-gray-800 rounded-2xl p-6">
-                <Mail className="w-8 h-8 text-emerald-600 dark:text-emerald-400 mb-4" />
-                <h3 className="text-gray-900 dark:text-white font-semibold mb-2">Email</h3>
-                <a href={`mailto:${siteConfig.social.email}`} className="text-gray-700 dark:text-gray-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">
-                  {siteConfig.social.email}
-                </a>
+              {/* Email Card */}
+              <div className="group relative w-full">
+                <span className="absolute inset-0 border-2 border-dashed border-black bg-white dark:border-white dark:bg-gray-900" />
+                <div className="relative border-2 border-black bg-white p-6 group-hover:-translate-x-1 group-hover:-translate-y-1 transition-transform duration-300 dark:border-white dark:bg-zinc-900 text-black dark:text-white flex flex-col justify-between">
+                  <div className="w-10 h-10 border-2 border-black dark:border-white bg-emerald-400 text-black flex items-center justify-center mb-4">
+                    <Mail className="w-5 h-5" />
+                  </div>
+                  <h3 className="font-mono font-bold text-base uppercase">EMAIL ME DIRECTLY</h3>
+                  <a href={`mailto:${siteConfig.social.email}`} className="text-xs sm:text-sm font-mono text-emerald-600 dark:text-emerald-400 hover:underline mt-1 break-all">
+                    {siteConfig.social.email}
+                  </a>
+                </div>
               </div>
 
-              <div className="bg-white/80 dark:bg-gray-900/50 backdrop-blur-xl border border-gray-300 dark:border-gray-800 rounded-2xl p-6">
-                <MapPin className="w-8 h-8 text-teal-600 dark:text-teal-400 mb-4" />
-                <h3 className="text-gray-900 dark:text-white font-semibold mb-2">Location</h3>
-                <p className="text-gray-700 dark:text-gray-400">Phnom Penh, Cambodia 🇰🇭</p>
+              {/* Location Card */}
+              <div className="group relative w-full">
+                <span className="absolute inset-0 border-2 border-dashed border-black bg-white dark:border-white dark:bg-gray-900" />
+                <div className="relative border-2 border-black bg-white p-6 group-hover:-translate-x-1 group-hover:-translate-y-1 transition-transform duration-300 dark:border-white dark:bg-zinc-900 text-black dark:text-white flex flex-col justify-between">
+                  <div className="w-10 h-10 border-2 border-black dark:border-white bg-emerald-400 text-black flex items-center justify-center mb-4">
+                    <MapPin className="w-5 h-5" />
+                  </div>
+                  <h3 className="font-mono font-bold text-base uppercase">OUR BASE OFFICE</h3>
+                  <p className="text-xs sm:text-sm font-mono text-zinc-500 dark:text-zinc-400 mt-1">
+                    Phnom Penh, Cambodia 🇰🇭
+                  </p>
+                </div>
               </div>
 
-              <div className="bg-white/80 dark:bg-gray-900/50 backdrop-blur-xl border border-gray-300 dark:border-gray-800 rounded-2xl p-6">
-                <h3 className="text-gray-900 dark:text-white font-semibold mb-4">Connect</h3>
-                <div className="flex flex-wrap gap-3">
-                  <a
-                    href={`https://github.com/${siteConfig.social.github}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-10 h-10 rounded-full bg-gray-900 dark:bg-gray-800 flex items-center justify-center hover:bg-emerald-600 transition-colors group"
-                  >
-                    <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.840 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.430.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                    </svg>
-                  </a>
-                  <a
-                    href={siteConfig.social.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center hover:bg-blue-700 transition-colors"
-                  >
-                    <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                    </svg>
-                  </a>
-                  <a
-                    href={siteConfig.social.facebook}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center hover:bg-blue-600 transition-colors"
-                  >
-                    <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                    </svg>
-                  </a>
-                  <a
-                    href={siteConfig.social.instagram}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-10 h-10 rounded-full bg-gradient-to-tr from-yellow-400 via-emerald-500 to-teal-600 flex items-center justify-center hover:opacity-80 transition-opacity"
-                  >
-                    <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                    </svg>
-                  </a>
-                  <a
-                    href={siteConfig.social.telegram}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-10 h-10 rounded-full bg-sky-500 flex items-center justify-center hover:bg-sky-600 transition-colors"
-                  >
-                    <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
-                    </svg>
-                  </a>
+              {/* Connect Card */}
+              <div className="group relative w-full">
+                <span className="absolute inset-0 border-2 border-dashed border-black bg-white dark:border-white dark:bg-gray-900" />
+                <div className="relative border-2 border-black bg-white p-6 group-hover:-translate-x-1 group-hover:-translate-y-1 transition-transform duration-300 dark:border-white dark:bg-zinc-900 text-black dark:text-white">
+                  <h3 className="font-mono font-bold text-sm uppercase mb-4">SOCIAL CHANNELS</h3>
+                  <div className="flex flex-wrap gap-2.5">
+                    {Object.entries(siteConfig.social)
+                      .filter(([_, url]) => url)
+                      .map(([key, url]) => (
+                        <a
+                          key={key}
+                          href={key === "email" ? `mailto:${url}` : url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="px-2.5 py-1 border-2 border-black dark:border-white text-[10px] font-mono font-bold uppercase bg-white text-black hover:bg-emerald-400 dark:bg-zinc-800 dark:text-white dark:hover:bg-emerald-600 transition-colors shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:shadow-none"
+                        >
+                          {key}
+                        </a>
+                      ))}
+                  </div>
                 </div>
               </div>
             </motion.div>
 
-            {/* Contact form */}
+            {/* Right Column: Form Container */}
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="md:col-span-3"
+              className="md:col-span-3 group relative w-full"
             >
-              <form onSubmit={handleSubmit} className="bg-white/80 dark:bg-gray-900/50 backdrop-blur-xl border border-gray-300 dark:border-gray-800 rounded-2xl p-8 space-y-6">
-                {/* Form Header Text */}
+              {/* Dashed shadow underlay */}
+              <span className="absolute inset-0 border-2 border-dashed border-black bg-white dark:border-white dark:bg-gray-900" />
+
+              {/* Main Form Box */}
+              <form 
+                onSubmit={handleSubmit} 
+                className="relative border-2 border-black bg-white p-8 space-y-6 group-hover:-translate-x-1.5 group-hover:-translate-y-1.5 transition-transform duration-300 dark:border-white dark:bg-zinc-900 text-black dark:text-white"
+              >
                 <div>
-                  {/* <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-xs font-mono font-bold mb-3">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping" />
-                    Direct Message
-                  </div> */}
-                  <h4 className="text-2xl font-bold text-gray-900 dark:text-white">
+                  <h4 className="text-xl font-bold uppercase font-mono tracking-tight">
                     Send Me a Message
                   </h4>
-                  <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mt-1">
+                  <p className="text-xs text-zinc-500 dark:text-zinc-400 font-mono mt-1">
                     Fill out the form below and I'll get back to you promptly.
                   </p>
                 </div>
 
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Name</label>
-                  <Input
+                <div className="space-y-2">
+                  <label className="block text-xs font-bold uppercase font-mono text-zinc-700 dark:text-zinc-300">Name</label>
+                  <input
                     type="text"
-                    placeholder="Your name"
+                    placeholder="Your Name"
                     required
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white placeholder:text-gray-500 focus:border-emerald-500"
+                    className="w-full border-2 border-black bg-white text-black p-3 font-mono text-xs focus:ring-2 focus:ring-emerald-400 focus:outline-none dark:border-white dark:bg-zinc-900 dark:text-white placeholder:text-zinc-500"
                   />
                 </div>
 
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Email</label>
-                  <Input
+                <div className="space-y-2">
+                  <label className="block text-xs font-bold uppercase font-mono text-zinc-700 dark:text-zinc-300">Email Address</label>
+                  <input
                     type="email"
                     placeholder="your@email.com"
                     required
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white placeholder:text-gray-500 focus:border-emerald-500"
+                    className="w-full border-2 border-black bg-white text-black p-3 font-mono text-xs focus:ring-2 focus:ring-emerald-400 focus:outline-none dark:border-white dark:bg-zinc-900 dark:text-white placeholder:text-zinc-500"
                   />
                 </div>
 
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Message</label>
-                  <Textarea
-                    placeholder="Tell me about your project..."
+                <div className="space-y-2">
+                  <label className="block text-xs font-bold uppercase font-mono text-zinc-700 dark:text-zinc-300">Message Description</label>
+                  <textarea
+                    placeholder="Tell me about your project detail..."
                     required
-                    rows={6}
+                    rows={5}
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className="bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white placeholder:text-gray-500 focus:border-emerald-500 resize-none"
+                    className="w-full border-2 border-black bg-white text-black p-3 font-mono text-xs focus:ring-2 focus:ring-emerald-400 focus:outline-none dark:border-white dark:bg-zinc-900 dark:text-white placeholder:text-zinc-500 resize-none"
                   />
                 </div>
 
-                <Button
+                <button
                   type="submit"
                   disabled={status === "sending"}
-                  className="w-full bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-semibold py-6 shadow-md shadow-emerald-500/20"
+                  className="w-full border-2 border-black bg-emerald-400 text-black font-mono font-bold uppercase py-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] disabled:opacity-50 transition-all flex items-center justify-center gap-2"
                 >
                   {status === "sending" ? (
-                    <><Loader2 className="w-4 h-4 mr-2 animate-spin" /> Sending...</>
+                    <><Loader2 className="w-4 h-4 animate-spin text-black" /> SENDING...</>
                   ) : status === "success" ? (
-                    <><CheckCircle className="w-4 h-4 mr-2" /> Message Sent!</>
+                    <><CheckCircle className="w-4 h-4 text-black" /> MESSAGE SENT!</>
                   ) : (
-                    <><Send className="w-4 h-4 mr-2" /> Send Message</>
+                    <><Send className="w-4 h-4 text-black" /> SEND MESSAGE</>
                   )}
-                </Button>
+                </button>
 
                 {status === "error" && (
-                  <p className="text-red-400 text-sm text-center">
-                    Failed to send message. Please try again.
+                  <p className="text-red-500 font-mono text-xs text-center font-bold">
+                    FAILED TO SEND MESSAGE. PLEASE TRY AGAIN directly via mail.
                   </p>
                 )}
               </form>
             </motion.div>
+
           </div>
         </div>
       </div>

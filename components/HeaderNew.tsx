@@ -10,7 +10,8 @@ import {
   faCode,
   faGraduationCap,
   faImages,
-  faEnvelope
+  faEnvelope,
+  faHeart
 } from "@fortawesome/free-solid-svg-icons";
 
 export function HeaderNew() {
@@ -44,6 +45,11 @@ export function HeaderNew() {
       name: "Education",
       link: "#education",
       icon: <FontAwesomeIcon icon={faGraduationCap} className="h-3.5 w-3.5 text-neutral-500 dark:text-white" />,
+    },
+    {
+      name: "Anime",
+      link: "#anime",
+      icon: <FontAwesomeIcon icon={faHeart} className="h-3.5 w-3.5 text-neutral-500 dark:text-white" />,
     },
     {
       name: "Pre-Graduation",

@@ -6,6 +6,7 @@ import { SkillsUnique } from '@/components/sections/SkillsUnique';
 import { ProjectsUnique } from '@/components/sections/ProjectsUnique';
 import { Education } from '@/components/sections/Education';
 import { PreGraduationUnique } from '@/components/sections/PreGraduationUnique';
+import { AnimeUnique } from '@/components/sections/AnimeUnique';
 import { ContactUnique } from '@/components/sections/ContactUnique';
 import { Footer } from '@/components/Footer';
 
@@ -20,6 +21,7 @@ export default function Home() {
       <ProjectsUnique />
       <Education />
       <PreGraduationUnique />
+      <AnimeUnique />
       <ContactUnique />
       <Footer />
     </div>

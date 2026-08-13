@@ -5,7 +5,7 @@ export const siteConfig = {
     titlePrefix: 'Thoeng Mengseu',
     profile_image: '/IMG_3539.jpg',
     form_id: 'https://formspree.io/f/myzynpbr',
-    
+
     social: {
         email: 'mengseu2004@gmail.com',
         twitter: 'https://x.com/Mengseu_Thoeng',
@@ -19,19 +19,19 @@ export const siteConfig = {
         dev: 'https://dev.to/thoeng_mengseu',
         hashnode: '',
     },
-    
+
     metadata: {
-        description: `Hi, I'm Mengseu Thoeng, a Software Engineer from Phnom Penh, Cambodia. Currently working at ACLEDA Bank Plc. Specialized in Spring Boot, Microservices Architecture, Full Stack Development with React & Next.js. Passionate about building scalable enterprise applications.`,
-        keywords: 'Mengseu Thoeng, Software Engineer, Cambodia Developer, Spring Boot, Microservices, Full Stack Developer, Java, React, Next.js, ACLEDA Bank, ISTAD Graduate, PostgreSQL, Oracle SQL',
+        description: `Hi, I'm Mengseu Thoeng, a Software Engineer from Phnom Penh, Cambodia. Specialized in Spring Boot, Microservices Architecture, Full Stack Development with React & Next.js. Passionate about building scalable enterprise applications.`,
+        keywords: 'Mengseu Thoeng, Software Engineer, Cambodia Developer, Spring Boot, Microservices, Full Stack Developer, Java, React, Next.js, ISTAD Graduate, PostgreSQL, Oracle SQL',
         type: 'website',
     },
-    
+
     // About section
     about: {
         title: "About Me",
         description: [
             "Hi! I'm Mengseu Thoeng, a passionate Software Engineer based in Phnom Penh, Cambodia. I specialize in building enterprise-grade Spring Boot applications, microservices architectures, and modern full-stack web applications.",
-            "Currently working at ACLEDA Bank Plc as a Microservices Developer, building web applications with Micro Frontend architecture and dedicated microservices for enterprise financial report processing.",
+            "Currently working as a Microservices Developer, building web applications with Micro Frontend architecture and dedicated microservices for enterprise financial report processing.",
             "I completed intensive software engineering training at ISTAD (1,670 hours total), mastering Spring Boot, Microservices, React, Next.js, Apache Kafka, and Docker. I'm committed to being a valuable person who can help advance Cambodia's technology economy. Code is poetry written in logic."
         ],
         image: '/seu.jpg',
@@ -73,7 +73,7 @@ export const siteConfig = {
             skills: ['Mathematics', 'Physics', 'Logic & Problem Solving'],
         },
     ],
-    
+
     // Work Experience
     experience: [
         {
@@ -106,7 +106,7 @@ export const siteConfig = {
             technologies: ['TikTok', 'Facebook', 'Social Media Marketing', 'Content Management', 'Analytics'],
         },
     ],
-    
+
     // Projects
     projects: [
         {
@@ -160,7 +160,7 @@ export const siteConfig = {
             featured: false,
         },
     ],
-    
+
     // Skills
     skills: {
         languages: [
@@ -198,7 +198,7 @@ export const siteConfig = {
             { name: 'Figma', level: 85 },
         ],
     },
-    
+
     // Services you offer
     services: [
         {
@@ -238,12 +238,124 @@ export const siteConfig = {
             icon: 'Lightbulb',
         },
     ],
-    
+
     preGraduationPhotos: [
         { id: 1, src: "/IMG_3521 2.jpg", alt: "Pre-Graduation Photo 1" },
         { id: 2, src: "/IMG_3522.jpg", alt: "Pre-Graduation Photo 2" },
         { id: 3, src: "/IMG_3523.jpg", alt: "Pre-Graduation Photo 3" },
         { id: 4, src: "/IMG_3547.jpg", alt: "Pre-Graduation Photo 4" },
+    ],
+    favAnime: [
+        {
+            id: 1,
+            rank: 1,
+            title: "JoJo's Bizarre Adventure",
+            genres: ["Action", "Adventure", "Supernatural"],
+            year: "2012",
+            rating: "8.70",
+            image: "https://cdn.myanimelist.net/images/anime/3/40409l.webp",
+            description: "The multi-generational epic of the Joestar family, each member inheriting unique supernatural powers (Stands) to battle dark forces across different historic eras.",
+            gradient: "from-yellow-500/20 via-pink-500/10 to-transparent",
+        },
+        {
+            id: 2,
+            rank: 2,
+            title: "One Piece",
+            genres: ["Action", "Adventure", "Fantasy"],
+            year: "1999",
+            rating: "8.75",
+            image: "https://cdn.myanimelist.net/images/anime/1244/138851l.webp",
+            description: "Monkey D. Luffy and his Straw Hat crew set sail across the dangerous Grand Line in search of the legendary One Piece treasure to become the next Pirate King.",
+            gradient: "from-blue-500/20 via-sky-500/10 to-transparent",
+        },
+        {
+            id: 3,
+            rank: 3,
+            title: "Code Geass: Lelouch of the Rebellion",
+            genres: ["Action", "Mecha", "Sci-Fi", "Drama"],
+            year: "2006",
+            rating: "8.70",
+            image: "https://cdn.myanimelist.net/images/anime/1032/135088l.webp",
+            description: "An exiled prince Lelouch acquires the power of absolute command (Geass) and leads a masked rebellion against the oppressive, world-dominating Britannian Empire.",
+            gradient: "from-purple-500/20 via-red-500/10 to-transparent",
+        },
+        {
+            id: 4,
+            rank: 4,
+            title: "Frieren: Beyond Journey's End",
+            genres: ["Adventure", "Fantasy", "Drama"],
+            year: "2023",
+            rating: "9.39",
+            image: "https://cdn.myanimelist.net/images/anime/1015/138006l.webp",
+            description: "A beautiful, contemplative journey of an immortal elf mage who learns the value of human connection and time after her legendary hero's party defeats the Demon King.",
+            gradient: "from-emerald-500/20 via-teal-500/10 to-transparent",
+        },
+        {
+            id: 5,
+            rank: 5,
+            title: "Chainsaw Man",
+            genres: ["Action", "Dark Fantasy", "Supernatural"],
+            year: "2022",
+            rating: "8.50",
+            image: "https://cdn.myanimelist.net/images/anime/1806/126216l.webp",
+            description: "Denji, a poor young man, makes a contract with his chainsaw devil pup Pochita, transforming into Chainsaw Man to hunt down dangerous devils for a better life.",
+            gradient: "from-orange-500/20 via-amber-500/10 to-transparent",
+        },
+        {
+            id: 6,
+            rank: 6,
+            title: "The Eminence in Shadow",
+            genres: ["Action", "Comedy", "Fantasy"],
+            year: "2022",
+            rating: "8.30",
+            image: "https://cdn.myanimelist.net/images/anime/1091/128729l.webp",
+            description: "Reincarnated into a magic-filled world, Cid Kagenou plays the role of a background character while secretly orchestrating a grand mastermind plot against a real evil cult.",
+            gradient: "from-violet-500/20 via-indigo-500/10 to-transparent",
+        },
+        {
+            id: 7,
+            rank: 7,
+            title: "Bleach",
+            genres: ["Action", "Supernatural", "Fantasy"],
+            year: "2004",
+            rating: "8.35",
+            image: "https://cdn.myanimelist.net/images/anime/1541/147774l.webp",
+            description: "High schooler Ichigo Kurosaki accidentally absorbs the powers of a Soul Reaper, accepting the duty to defend humans and guide lost souls to the Soul Society.",
+            gradient: "from-zinc-700/20 via-neutral-800/10 to-transparent",
+        },
+        {
+            id: 8,
+            rank: 8,
+            title: "Hunter x Hunter (2011)",
+            genres: ["Action", "Adventure", "Fantasy"],
+            year: "2011",
+            rating: "9.04",
+            image: "https://cdn.myanimelist.net/images/anime/1337/99013l.webp",
+            description: "Gon Freecss trains to become a legendary Hunter in order to find his missing father, embarking on a dangerous journey with deep power systems and high stakes.",
+            gradient: "from-green-500/20 via-emerald-500/10 to-transparent",
+        },
+        {
+            id: 9,
+            rank: 9,
+            title: "Summer Time Rendering",
+            genres: ["Mystery", "Thriller", "Supernatural"],
+            year: "2022",
+            rating: "8.52",
+            image: "https://cdn.myanimelist.net/images/anime/1247/111453l.jpg",
+            description: "Shinpei returns to his childhood island home for a friend's funeral, only to find himself trapped in a deadly, supernatural loop involving clone-like shadows.",
+            gradient: "from-cyan-500/20 via-teal-500/10 to-transparent",
+        },
+        {
+            id: 10,
+            rank: 10,
+            title: "Dandadan",
+            genres: ["Action", "Comedy", "Supernatural", "Sci-Fi"],
+            year: "2024",
+            rating: "8.65",
+            image: "https://cdn.myanimelist.net/images/anime/1584/143719l.webp",
+            description: "A girl from a family of spirit mediums and an occult geek class representative swap stories about ghosts and aliens, setting off a chaotic, fast-paced supernatural battle.",
+            gradient: "from-rose-500/20 via-fuchsia-500/10 to-transparent",
+        },
     ],
 } as const;
 
