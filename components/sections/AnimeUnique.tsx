@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { Tv, Heart, Star, Calendar } from "lucide-react";
+import { Star, Calendar } from "lucide-react";
 import Image from "next/image";
 import { siteConfig } from "@/config/site";
 
@@ -10,116 +10,98 @@ export function AnimeUnique() {
 
   return (
     <section id="anime" className="py-24 bg-white dark:bg-black relative overflow-hidden transition-colors font-sans">
-      {/* Background Grid - Neobrutalist friendly */}
+      {/* Background Grid */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f0a_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f0a_1px,transparent_1px)] bg-[size:4rem_4rem]" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f08_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f08_1px,transparent_1px)] bg-[size:4rem_4rem]" />
       </div>
 
-      <div className="container mx-auto px-6 relative z-10">
-        {/* Section Header */}
+      <div className="container mx-auto px-6 relative z-10 max-w-6xl">
+        {/* Section Header - Rule 1 & 2: Eyebrow + Specific Headline */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-400 text-black border-2 border-black font-mono font-bold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] mb-6">
-            <Heart className="w-4 h-4 fill-black animate-pulse" />
-            <span>MY FAVORITES</span>
-          </div>
+          <span className="text-xs font-semibold uppercase tracking-widest text-emerald-600 dark:text-emerald-400 mb-2 block">
+            Interests &amp; Inspiration
+          </span>
 
-          <h2 className="text-4xl md:text-6xl font-extrabold tracking-tight mb-4 text-black dark:text-white uppercase font-mono">
+          <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight mb-4 text-zinc-950 dark:text-white">
             Top 10 Favorite Anime
           </h2>
-          <p className="text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto text-base sm:text-lg font-mono">
-            A curated list of series that left a lasting impression on me, showcasing exceptional storytelling, music, and animation.
+          <p className="text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto text-base sm:text-lg leading-relaxed">
+            Curated series celebrated for exceptional world-building, cinematography, storytelling, and direction.
           </p>
         </motion.div>
 
-        {/* Anime Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 max-w-6xl mx-auto">
+        {/* Anime Cards Grid (Rule 13: Clean, crisp borders without dashed ghost underlays) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           <AnimatePresence mode="popLayout">
             {animeList.map((anime, index) => (
               <motion.div
                 key={anime.id}
                 layout
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.5, delay: index * 0.05 }}
-                className="group/card relative w-full h-[470px]"
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.4, delay: index * 0.04 }}
+                className="border-2 border-black dark:border-white bg-white dark:bg-zinc-900 p-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,0.15)] hover:translate-x-[1px] hover:translate-y-[1px] transition-all flex flex-col justify-between group"
               >
-                {/* Underlay Dashed Shadow */}
-                <span className="absolute inset-0 border-2 border-dashed border-black bg-white dark:border-white dark:bg-gray-900" />
-
-                {/* Main Card */}
-                <div className="absolute inset-0 flex flex-col justify-between border-2 border-black bg-white p-4 text-black group-hover/card:-translate-x-2 group-hover/card:-translate-y-2 transition-transform duration-300 hover:bg-emerald-50 dark:border-white dark:bg-gray-900 dark:text-white dark:hover:bg-emerald-950/20">
-                  
-                  {/* Poster Container */}
-                  <div className="relative w-full h-64 border-2 border-black dark:border-white overflow-hidden bg-zinc-100 dark:bg-zinc-800">
-                    {anime.image ? (
-                      <Image
-                        src={anime.image}
-                        alt={anime.title}
-                        fill
-                        className="object-cover group-hover/card:scale-105 transition-transform duration-500"
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        priority
-                      />
-                    ) : (
-                      <div className="w-full h-full flex items-center justify-center">
-                        <Tv className="w-12 h-12 text-zinc-400" />
-                      </div>
-                    )}
+                {/* Poster Container */}
+                <div>
+                  <div className="relative w-full h-64 border border-zinc-200 dark:border-zinc-800 overflow-hidden bg-zinc-100 dark:bg-zinc-800 mb-4">
+                    <Image
+                      src={anime.image}
+                      alt={anime.title}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
                     
-                    {/* Floating Rank Badge (Neobrutalist solid shadow in Emerald) */}
-                    <div className="absolute top-2 left-2 bg-emerald-400 dark:bg-emerald-500 text-black border-2 border-black dark:border-white px-2 py-0.5 text-xs font-mono font-extrabold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
-                      #{String(anime.rank).padStart(2, "0")}
+                    {/* Rank Badge - Rule 18: Tabular nums */}
+                    <div className="absolute top-2.5 left-2.5 border border-black bg-emerald-400 text-black font-mono font-bold text-xs px-2.5 py-1 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] tabular-nums">
+                      #{index + 1 < 10 ? `0${index + 1}` : index + 1}
+                    </div>
+
+                    {/* Score Tag */}
+                    <div className="absolute top-2.5 right-2.5 bg-black/80 backdrop-blur-sm text-white border border-white/20 text-xs font-mono font-semibold px-2 py-1 flex items-center gap-1 rounded tabular-nums">
+                      <Star className="w-3 h-3 text-amber-400 fill-amber-400" />
+                      <span>{anime.rating}</span>
                     </div>
                   </div>
 
-                  {/* Info Section */}
-                  <div className="flex-1 flex flex-col justify-between pt-3">
-                    <div>
-                      {/* Meta stats */}
-                      <span className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase font-mono text-zinc-500 dark:text-zinc-400">
-                        <Calendar className="w-3.5 h-3.5 text-black dark:text-white" />
-                        <span>{anime.year}</span>
-                        <span>•</span>
-                        <Star className="w-3.5 h-3.5 text-amber-500 fill-amber-500" />
-                        <span>{anime.rating}</span>
-                      </span>
-
-                      {/* Title */}
-                      <h3 className="mt-1 text-lg font-bold line-clamp-1 tracking-tight group-hover/card:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors uppercase font-mono">
-                        {anime.title}
-                      </h3>
-
-                      {/* Description */}
-                      <p className="mt-2 text-xs sm:text-sm line-clamp-3 text-zinc-600 dark:text-zinc-400 leading-relaxed">
-                        {anime.description}
-                      </p>
-                    </div>
-
-                    {/* Genres Tag list */}
-                    <div className="flex flex-wrap gap-1 mt-3 pt-3 border-t border-dashed border-black dark:border-white">
-                      {anime.genres.map((genre) => (
-                        <span
-                          key={genre}
-                          className="px-2 py-0.5 border border-black dark:border-white text-[9px] font-mono font-bold uppercase bg-white text-black dark:bg-zinc-800 dark:text-white"
-                        >
-                          {genre}
-                        </span>
-                      ))}
-                    </div>
+                  {/* Details Header */}
+                  <div className="space-y-1 mb-2">
+                    <h3 className="font-bold text-base text-zinc-950 dark:text-white line-clamp-1 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+                      {anime.title}
+                    </h3>
+                    <p className="text-xs text-zinc-500 dark:text-zinc-400 line-clamp-1">
+                      {anime.genres.slice(0, 2).join(" • ")}
+                    </p>
                   </div>
 
+                  {/* Synopsis */}
+                  <p className="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed line-clamp-3 mb-4">
+                    {anime.description}
+                  </p>
+                </div>
+
+                {/* Card Footer: Metadata */}
+                <div className="pt-3 border-t border-zinc-100 dark:border-zinc-800 flex items-center justify-between text-xs font-mono text-zinc-500 dark:text-zinc-400 tabular-nums">
+                  <div className="flex items-center gap-1.5">
+                    <Calendar className="w-3.5 h-3.5" />
+                    <span>{anime.year}</span>
+                  </div>
+                  <span className="text-[11px] font-semibold text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40 px-2 py-0.5 rounded border border-emerald-200 dark:border-emerald-800">
+                    {anime.genres[0]}
+                  </span>
                 </div>
               </motion.div>
             ))}
           </AnimatePresence>
         </div>
+
       </div>
     </section>
   );

@@ -5,7 +5,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { 
-  faGraduationCap, 
   faExpand, 
   faXmark, 
   faChevronLeft, 
@@ -35,124 +34,135 @@ export function PreGraduationUnique() {
     <section id="pre-graduation" className="py-24 bg-white dark:bg-black relative overflow-hidden transition-colors font-sans">
       {/* Background Grid */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f0a_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f0a_1px,transparent_1px)] bg-[size:4rem_4rem]" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f08_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f08_1px,transparent_1px)] bg-[size:4rem_4rem]" />
       </div>
 
-      <div className="container mx-auto px-6 relative z-10">
-        {/* Section Header */}
+      <div className="container mx-auto px-6 relative z-10 max-w-7xl">
+        {/* Section Header - Rule 1 & 2: Eyebrow + Specific Headline */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-400 text-black border-2 border-black font-mono font-bold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] mb-6">
-            <FontAwesomeIcon icon={faGraduationCap} className="w-4 h-4 text-black" />
-            <span>PRE-GRADUATION</span>
-          </div>
+          <span className="text-xs font-semibold uppercase tracking-widest text-emerald-600 dark:text-emerald-400 mb-2 block">
+            Milestones
+          </span>
 
-          <h2 className="text-4xl md:text-6xl font-extrabold tracking-tight mb-4 text-black dark:text-white uppercase font-mono">
-            Pre-Graduation Photos
+          <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight mb-4 text-zinc-950 dark:text-white">
+            Pre-Graduation Gallery
           </h2>
-          <p className="text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto text-base sm:text-lg font-mono">
-            Capturing milestones and memories of my software engineering study completion.
+          <p className="text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto text-base sm:text-lg leading-relaxed">
+            Milestone moments and memories commemorating the completion of intensive software engineering training.
           </p>
         </motion.div>
 
-        {/* 4 Photo Grid Layout */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
+        {/* 4 Photo Grid Layout (Rule 13: Clean borders without dashed ghost underlays) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {photos.map((photo, index) => (
             <motion.div
               key={photo.id}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              transition={{ duration: 0.4, delay: index * 0.1 }}
               onClick={() => setActivePhotoIndex(index)}
-              className="group relative h-96 cursor-pointer"
+              className="cursor-pointer border-2 border-black dark:border-white bg-white dark:bg-zinc-900 p-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,0.15)] hover:translate-x-[1px] hover:translate-y-[1px] transition-all group"
             >
-              {/* Dashed Shadow Underlay */}
-              <span className="absolute inset-0 border-2 border-dashed border-black bg-white dark:border-white dark:bg-gray-900" />
-
-              {/* Main Photo Card */}
-              <div className="absolute inset-0 border-2 border-black dark:border-white overflow-hidden bg-zinc-100 dark:bg-zinc-800 group-hover:-translate-x-1.5 group-hover:-translate-y-1.5 transition-transform duration-300">
+              {/* Image Frame */}
+              <div className="relative aspect-[4/5] w-full overflow-hidden mb-4 border border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-800">
                 <Image
                   src={photo.src}
                   alt={photo.alt}
                   fill
-                  className="object-cover group-hover:scale-102 transition-transform duration-500 ease-out"
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
                 />
-
-                {/* Hover Overlay with FontAwesome Expand Icon */}
                 <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                  <div className="p-3 border-2 border-black bg-emerald-400 text-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transform scale-90 group-hover:scale-100 transition-transform duration-300">
-                    <FontAwesomeIcon icon={faExpand} className="w-5 h-5" />
+                  <div className="p-3 bg-white text-black border border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+                    <FontAwesomeIcon icon={faExpand} className="w-4 h-4" />
                   </div>
                 </div>
+              </div>
+
+              {/* Caption */}
+              <div className="flex items-center justify-between text-xs font-semibold">
+                <span className="text-zinc-900 dark:text-zinc-100 truncate pr-2">
+                  {photo.alt}
+                </span>
+                <span className="text-zinc-400 font-mono text-[11px] tabular-nums shrink-0">
+                  #{photo.id}
+                </span>
               </div>
             </motion.div>
           ))}
         </div>
-      </div>
 
-      {/* Fullscreen Lightbox Modal */}
-      <AnimatePresence>
-        {activePhotoIndex !== null && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setActivePhotoIndex(null)}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-sm"
-          >
-            {/* Close Button */}
-            <button
-              onClick={() => setActivePhotoIndex(null)}
-              className="absolute top-6 right-6 z-50 p-3 border-2 border-black bg-emerald-400 text-black hover:bg-emerald-300 transition-colors shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
-              aria-label="Close"
-            >
-              <FontAwesomeIcon icon={faXmark} className="w-6 h-6" />
-            </button>
-
-            {/* Navigation Buttons */}
-            <button
-              onClick={handlePrev}
-              className="absolute left-4 md:left-8 z-50 p-3 border-2 border-black bg-emerald-400 text-black hover:bg-emerald-300 transition-colors shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
-              aria-label="Previous"
-            >
-              <FontAwesomeIcon icon={faChevronLeft} className="w-6 h-6" />
-            </button>
-
-            <button
-              onClick={handleNext}
-              className="absolute right-4 md:right-8 z-50 p-3 border-2 border-black bg-emerald-400 text-black hover:bg-emerald-300 transition-colors shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
-              aria-label="Next"
-            >
-              <FontAwesomeIcon icon={faChevronRight} className="w-6 h-6" />
-            </button>
-
-            {/* Image Preview Container */}
+        {/* Modal Lightbox */}
+        <AnimatePresence>
+          {activePhotoIndex !== null && (
             <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              onClick={(e) => e.stopPropagation()}
-              className="relative max-w-5xl w-full h-[80vh]"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setActivePhotoIndex(null)}
+              className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6"
             >
-              <Image
-                src={photos[activePhotoIndex].src}
-                alt={photos[activePhotoIndex].alt}
-                fill
-                className="object-contain border-4 border-black dark:border-white bg-black"
-                priority
-              />
+              <div
+                onClick={(e) => e.stopPropagation()}
+                className="relative max-w-4xl w-full max-h-[90vh] bg-white dark:bg-zinc-900 border-2 border-black dark:border-white p-4 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]"
+              >
+                {/* Close Button */}
+                <button
+                  onClick={() => setActivePhotoIndex(null)}
+                  className="absolute top-4 right-4 z-10 w-9 h-9 border-2 border-black dark:border-white bg-white dark:bg-zinc-900 text-black dark:text-white flex items-center justify-center hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
+                  aria-label="Close modal"
+                >
+                  <FontAwesomeIcon icon={faXmark} className="w-4 h-4" />
+                </button>
+
+                {/* Main Photo */}
+                <div className="relative aspect-[4/5] sm:aspect-[16/10] w-full max-h-[75vh] overflow-hidden border border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-800">
+                  <Image
+                    src={photos[activePhotoIndex].src}
+                    alt={photos[activePhotoIndex].alt}
+                    fill
+                    className="object-contain"
+                  />
+                </div>
+
+                {/* Footer Controls */}
+                <div className="flex items-center justify-between pt-4 text-xs font-semibold">
+                  <span className="text-zinc-900 dark:text-zinc-100">
+                    {photos[activePhotoIndex].alt}
+                  </span>
+
+                  <div className="flex items-center gap-2">
+                    <button
+                      onClick={handlePrev}
+                      className="p-2 border border-zinc-300 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
+                      aria-label="Previous photo"
+                    >
+                      <FontAwesomeIcon icon={faChevronLeft} className="w-3.5 h-3.5" />
+                    </button>
+                    <span className="font-mono tabular-nums text-zinc-500 px-2">
+                      {activePhotoIndex + 1} / {photos.length}
+                    </span>
+                    <button
+                      onClick={handleNext}
+                      className="p-2 border border-zinc-300 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
+                      aria-label="Next photo"
+                    >
+                      <FontAwesomeIcon icon={faChevronRight} className="w-3.5 h-3.5" />
+                    </button>
+                  </div>
+                </div>
+              </div>
             </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          )}
+        </AnimatePresence>
+
+      </div>
     </section>
   );
 }
